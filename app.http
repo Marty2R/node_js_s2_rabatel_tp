@@ -1,0 +1,18 @@
+GET http://localhost:3001/
+
+###
+
+GET http://localhost:3000/stock
+
+###
+
+POST http://localhost:3000/stock
+Content-Type: application/json
+
+{
+    "brand": "unbranded",
+    "price": 9,
+    "quant": 2,
+    "desc": "",
+    "size": "null"
+}
