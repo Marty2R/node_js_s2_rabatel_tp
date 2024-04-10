@@ -16,3 +16,25 @@ Content-Type: application/json
     "desc": "",
     "size": "null"
 }
+
+###
+
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+    "email": "admin@randomcorporate.com",
+    "password": "admin",
+    "name": "admin",
+    "phoneNumber": "1234567890"
+}
+
+###
+
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+    "email": "admin@randomcorporate.com",
+    "password": "admin"
+}

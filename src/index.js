@@ -2,6 +2,7 @@ import "dotenv/config";
 import mongoose from "mongoose";
 import express, { response } from "express";
 import stockRoute from "./routes/stock.js";
+import authRoutes from "./routes/auth.js";
 
 const app = express();
 
@@ -15,7 +16,7 @@ mongoose.connect(MONGO_STRING).then(() => {
 
   // On lance le serveur :
   app.listen(PORT, () => {
-    console.log(`server is running on port  ${PORT}`);
+    console.log(`server is running on port : ${PORT}`);
   });
 });
 
@@ -28,3 +29,4 @@ app.get("/", (request, response) => {
 
 // Middelwares
 app.use("/stock", stockRoute);
+app.use("/auth", authRoutes);

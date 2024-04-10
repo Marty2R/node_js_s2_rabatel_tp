@@ -16,7 +16,7 @@ export const createStock = (request, response) => {
   const bodyContent = request.body;
   const errors = validationResult(request);
 
-  console.log(errors.type);
+  // console.log(errors.type);
 
   // on cree un nouvelle instance de Stock
   const newStock = new Stock(bodyContent);
