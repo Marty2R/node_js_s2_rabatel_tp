@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import authRoutes from "./auth.js";
+import auth from "../middlewares/auth.js";
 import stockRouter from "./stock.js";
 import fileRouter from "./file.js";
 import multer from "multer";
@@ -13,8 +14,7 @@ router.get("/", (request, response) => {
 });
 
 // Middelwares
-router.use("/stock", stockRouter);
+router.use("/stock", auth, stockRouter);
 router.use("/auth", authRoutes);
-router.use("/image", fileRouter);
 
 export default router;
