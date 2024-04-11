@@ -36,7 +36,6 @@ export const signin = async (req, res, next) => {
         { expiresIn: "1h" }
       );
       // on renvoie le token
-      console.log(token);
       res.status(200).json({ token });
     } else {
       // si le mot de passe est invalide, on renvoie une erreur

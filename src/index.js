@@ -1,15 +1,29 @@
 import "dotenv/config";
 import mongoose from "mongoose";
-import express, { response } from "express";
-import stockRoute from "./routes/stock.js";
-import authRoutes from "./routes/auth.js";
-
-const app = express();
+import { CreateApp } from "./app.js";
+import multer from "multer";
 
 const PORT = process.env.PORT || 3001;
 
-console.log("env : ", process.env.MONGO_STRING);
 const MONGO_STRING = process.env.MONGO_STRING;
+
+const app = CreateApp();
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./uploads/");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
+
+app.post("/photos/upload", upload.array("photos", 12), (req, res, next) => {
+  const fileNames = req.files.map((file) => file.filename);
+  res.send(fileNames);
+});
 
 mongoose.connect(MONGO_STRING).then(() => {
   console.log("Connected to the database !");
@@ -19,14 +33,3 @@ mongoose.connect(MONGO_STRING).then(() => {
     console.log(`server is running on port : ${PORT}`);
   });
 });
-
-app.use(express.json());
-
-// Routes
-app.get("/", (request, response) => {
-  response.json({ message: "Hello Word !" });
-});
-
-// Middelwares
-app.use("/stock", stockRoute);
-app.use("/auth", authRoutes);
