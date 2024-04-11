@@ -14,7 +14,8 @@ router.get("/", (request, response) => {
 });
 
 // Middelwares
-router.use("/stock", auth, stockRouter);
+router.use("/stock", stockRouter);
 router.use("/auth", authRoutes);
+router.use("/file", auth, fileRouter);
 
 export default router;
