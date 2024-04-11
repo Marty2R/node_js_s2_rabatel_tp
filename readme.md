@@ -1,8 +1,8 @@
-## Site de gestion des stock
+# Site de gestion des stock
 
 - Lancer projet : npm run start:dev
 
-# Fonctionnalités :
+## Fonctionnalités :
 
 - Ajout d'un produit en DB
 - Affichage des produits en stock
@@ -10,7 +10,7 @@
 - Register (JWT)
 - Ajout d'image dans un dossier
 
-#
+### Infos
 
 - Gestion des erreurs en middleware
 - fonctionnalité upload protégé (utilisateur connecté uniquement)
